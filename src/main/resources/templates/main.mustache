@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Oswald:wght@700&family=Playfair+Display:ital,wght@1,600&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet"
+          href="../static/fontawesome-free-5.0.8/web-fonts-with-css/css/fontawesome-all.css">
+</head>
+<body>
+<header class="headr">
+    <div class="container my-flex">
+        <a href="#" class="fab fa-earlybirds logo"></a>
+        <h2 class="head">La Shop</h2><a class="exit" href="/logout">Выйти</a>
+        <p class="after_h1">Компания по продаже бытовой техники</p>
+        <p class="tell"> Call us: 9357425</p>
+    </div>
+</header>
+
+
+<section class="bg_scroll">
+    <div class="container">
+        <form class="search" method="get" action="/filter">
+            <label>
+                <input type="text" name="name">
+            </label>
+            <button class="poz" type="submit">Поиск</button>
+        </form>
+
+        <div class="our_products">
+            {{#items}}
+                <div>
+                    <img src="/main/loadImage/{{name}}" alt="img"/>
+                    <p>{{name}}</p>
+                    <p>{{count}}</p>
+                    <form method="post" action="/main/delete/{{name}}">
+                        <button type="submit">Удалить</button>
+                    </form>
+                </div>
+            {{/items}}
+        </div>
+    </div>
+</section>
+
+<section class="background_all">
+
+    <div class="container">
+        <form class="all_products" method="post" action="/add" enctype="multipart/form-data">
+            <label class="add_product after_h1">Добавить продукт:</label>
+            <label>
+                <input class="product" type="text" name="name" placeholder="Введите имя продукта">
+                <input class="product" type="text" name="count" placeholder="Введите кол-во">
+                <label class="button">Выбрать картинку
+                    <input style="visibility: hidden; display: inline-block; width: 0" class="foto" type="file"
+                           name="image" placeholder="Добавьте картинку">
+                </label>
+            </label>
+            <button type="submit">Добавить</button>
+        </form>
+    </div>
+
+</section>
+
+<footer>
+
+</footer>
+
+</body>
+</html>
